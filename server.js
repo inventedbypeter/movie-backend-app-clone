@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
+const connectDB = require("./db");
 
 const app = express();
 const port = 5000;
@@ -18,5 +19,6 @@ app.use(function (req, res, next) {
 
 app.use(morgan("dev"));
 app.use(helmet());
+connectDB();
 
 app.listen(port, () => console.log(`API Server Listening on port ${port}`));
